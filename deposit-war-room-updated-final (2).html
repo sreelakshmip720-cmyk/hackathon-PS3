@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deposit War Room — Karnataka Security Deposit Dispute Desk</title>
+<style>
+:root{
+  --terracotta:#b85c43; --terracotta-2:#d57a5e; --sepia:#2d1b17; --sepia-2:#432820;
+  --ochre:#d4a23a; --cream:#f8efe2; --paper:#fffaf3; --ink:#251914; --muted:#765f56;
+  --line:rgba(74,42,32,.16); --card:rgba(255,250,243,.92); --shadow:0 18px 50px rgba(42,24,18,.16);
+}
+[data-theme="dark"]{
+  --cream:#1b1311; --paper:#241815; --ink:#f7eadc; --muted:#c7aa98; --line:rgba(255,225,205,.15);
+  --card:rgba(42,27,23,.94); --shadow:0 18px 60px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--cream);color:var(--ink)}
+button,input,select,textarea{font:inherit} button{cursor:pointer}
+#particles{position:fixed;inset:0;width:100%;height:100%;z-index:-2;background:
+ radial-gradient(circle at 15% 15%,rgba(184,92,67,.28),transparent 32%),
+ radial-gradient(circle at 80% 25%,rgba(212,162,58,.16),transparent 28%),
+ linear-gradient(135deg,var(--sepia),#5a3327 50%,#2a1713)}
+[data-theme="dark"] #particles{background:
+ radial-gradient(circle at 15% 15%,rgba(184,92,67,.18),transparent 32%),
+ radial-gradient(circle at 80% 25%,rgba(212,162,58,.10),transparent 28%),
+ linear-gradient(135deg,#100b09,#241410 50%,#0e0908)}
+#app{min-height:100vh}.wrap{max-width:1180px;margin:auto;padding:0 22px}
+.topbar{position:sticky;top:0;z-index:20;backdrop-filter:blur(16px);background:rgba(43,25,20,.76);border-bottom:1px solid rgba(255,230,205,.12);color:#fff}
+.nav{height:70px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.03em}.mark{width:38px;height:38px;border-radius:11px;background:linear-gradient(145deg,var(--ochre),var(--terracotta));display:grid;place-items:center;box-shadow:0 0 28px rgba(212,162,58,.35)}
+.nav-actions{display:flex;gap:8px;align-items:center}.icon-btn,.ghost{border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:#fff;padding:9px 12px;border-radius:10px}
+.hero{min-height:78vh;display:grid;align-items:center;padding:70px 0 50px;color:#fff}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:center}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;padding:7px 11px;border:1px solid rgba(255,230,205,.18);border-radius:999px;background:rgba(255,255,255,.06);font-size:12px;text-transform:uppercase;letter-spacing:.12em}
+h1{font-size:clamp(42px,7vw,76px);line-height:.95;letter-spacing:-.06em;margin:20px 0 18px}.hero p{font-size:18px;line-height:1.65;color:#f5ded0;max-width:680px}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.primary{border:0;background:linear-gradient(135deg,var(--terracotta-2),var(--ochre));color:#28140f;font-weight:800;padding:13px 17px;border-radius:12px;box-shadow:0 10px 30px rgba(212,162,58,.22)}
+.secondary{border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;padding:13px 17px;border-radius:12px}
+.hero-card{padding:25px;border:1px solid rgba(255,230,205,.16);border-radius:22px;background:rgba(37,20,16,.55);backdrop-filter:blur(12px);box-shadow:0 30px 80px rgba(0,0,0,.22)}
+.stat{display:flex;justify-content:space-between;padding:15px 0;border-bottom:1px solid rgba(255,230,205,.1)}.stat:last-child{border-bottom:0}.stat strong{color:#ffe3a0}
+.app-shell{background:var(--cream);border-top-left-radius:32px;border-top-right-radius:32px;padding:28px 0 80px;box-shadow:0 -20px 70px rgba(0,0,0,.18)}
+.progress{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:0 0 24px}.step{padding:12px;border-radius:13px;border:1px solid var(--line);background:var(--card);color:var(--muted);font-size:12px;font-weight:700;text-align:center}.step.active{background:var(--sepia-2);color:#fff;border-color:var(--sepia-2)}.step.done{background:rgba(184,92,67,.12);color:var(--terracotta)}
+.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:22px}.card h2{margin:0 0 7px;font-size:20px}.sub{color:var(--muted);font-size:13px;line-height:1.55}
+.role-toggle{display:grid;grid-template-columns:1fr 1fr;background:rgba(184,92,67,.08);padding:4px;border-radius:12px;margin:18px 0}.role-toggle button{border:0;background:transparent;padding:11px;border-radius:9px;color:var(--muted);font-weight:700}.role-toggle button.active{background:var(--terracotta);color:#fff}
+.fields{display:grid;grid-template-columns:repeat(2,1fr);gap:13px;margin-top:16px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:12px;font-weight:800;color:var(--muted)}input,select,textarea{width:100%;border:1px solid var(--line);background:var(--paper);color:var(--ink);padding:11px 12px;border-radius:10px;outline:none}textarea{min-height:90px;resize:vertical}input:focus,select:focus,textarea:focus{border-color:var(--terracotta);box-shadow:0 0 0 3px rgba(184,92,67,.12)}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:18px 0 12px}.mini{font-size:11px;color:var(--muted)}
+.evidence-list{display:grid;gap:11px}.evidence{border:1px solid var(--line);border-radius:14px;padding:14px;background:rgba(184,92,67,.045)}.e-head{display:flex;justify-content:space-between;gap:10px;align-items:center}.badge{font-size:11px;padding:5px 8px;border-radius:999px;background:rgba(212,162,58,.16);color:#76540d;font-weight:800}.e-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.pdf{border:1px dashed var(--terracotta);padding:10px;border-radius:10px;background:rgba(184,92,67,.06);font-size:12px}
+.tabs{display:flex;gap:7px;overflow:auto;margin:0 0 18px}.tab{white-space:nowrap;border:1px solid var(--line);background:var(--card);color:var(--muted);padding:9px 12px;border-radius:999px;font-weight:700;font-size:12px}.tab.active{background:var(--sepia-2);color:#fff}
+.hidden{display:none!important}.money{font-variant-numeric:tabular-nums}.result{font-size:30px;font-weight:900;color:var(--terracotta)}.breakdown{display:grid;gap:8px;margin-top:12px}.row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line);font-size:13px}.row:last-child{border-bottom:0}.notice{border-left:4px solid var(--ochre);padding:12px 14px;background:rgba(212,162,58,.10);font-size:12px;line-height:1.55;border-radius:9px}
+.rounds{display:grid;gap:10px}.round{border:1px solid var(--line);border-radius:13px;padding:13px}.round.current{border-color:var(--terracotta);box-shadow:0 0 0 3px rgba(184,92,67,.08)}.round h4{margin:0 0 7px}.offer-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.settlement{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;white-space:pre-wrap;background:#1b1110;color:#f8e8d7;border-radius:14px;padding:16px;min-height:300px;overflow:auto}
+.footer{padding:22px 0;color:var(--muted);font-size:11px}.footer a{color:var(--terracotta);font-weight:700}
+@media(max-width:900px){.hero-grid,.grid{grid-template-columns:1fr}.hero{padding-top:50px}.hero-card{max-width:650px}.progress{grid-template-columns:repeat(5,minmax(90px,1fr));overflow:auto}.fields,.e-grid,.offer-row{grid-template-columns:1fr}}
+@media(max-width:560px){.wrap{padding:0 14px}.nav{height:62px}.brand span{display:none}.fields{grid-template-columns:1fr}h1{font-size:48px}.hero p{font-size:16px}.card{padding:16px}}
+
+/* hackathon upgrades */
+.legal-source{display:flex;gap:14px;align-items:center}.court-seal{width:54px;height:54px;object-fit:contain;border-radius:50%;background:#fff;padding:2px;border:1px solid var(--line)}
+.dual{display:grid;grid-template-columns:1fr 1fr;gap:14px}.party-card{border:1px solid var(--line);border-radius:14px;padding:15px;background:rgba(184,92,67,.035)}
+.rule-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}.rule{border:1px solid var(--line);border-radius:12px;padding:12px}.rule strong{display:block;margin-bottom:4px}.gapbar{height:18px;background:rgba(184,92,67,.12);border-radius:99px;overflow:hidden;margin:12px 0}.gapfill{height:100%;background:linear-gradient(90deg,var(--terracotta),var(--ochre));border-radius:99px;transition:.25s}.eligible{color:#26724a;font-weight:900}.noteligible{color:var(--terracotta);font-weight:900}.scenario-row{display:flex;gap:8px;flex-wrap:wrap}.scenario{border:1px solid var(--line);background:var(--paper);color:var(--ink);padding:8px 10px;border-radius:10px;font-size:12px;font-weight:800}.consent{border:1px solid var(--ochre);background:rgba(212,162,58,.08);padding:14px;border-radius:12px;margin-top:14px}.consent label{display:flex;gap:9px;align-items:flex-start;font-size:12px}.timeline{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin:10px 0}.state-pill{font-size:10px;padding:8px 5px;border-radius:8px;background:rgba(184,92,67,.08);text-align:center;color:var(--muted)}.state-pill.active{background:var(--sepia-2);color:#fff}.small-btn{padding:8px 10px;border-radius:9px;border:1px solid var(--line);background:var(--paper);color:var(--ink);font-weight:800}.warning{border-left:4px solid var(--terracotta);padding:11px 13px;background:rgba(184,92,67,.08);font-size:12px;border-radius:8px}
+@media(max-width:900px){.dual,.rule-grid{grid-template-columns:1fr}.timeline{grid-template-columns:repeat(4,1fr)}}
+.section-actions{justify-content:flex-end;border-top:1px solid var(--line);padding-top:16px;margin-top:20px}.step{cursor:pointer}.step:hover,.tab:hover{border-color:var(--terracotta);transform:translateY(-1px)}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body data-theme="light">
+<canvas id="particles"></canvas>
+<div id="app">
+<header class="topbar"><div class="wrap nav">
+  <div class="brand"><div class="mark">⚖</div><span>Deposit War Room</span></div>
+  <div class="nav-actions">
+    <button class="icon-btn" id="themeBtn" aria-label="Switch theme">☾ Dark</button>
+    <button class="ghost" onclick="scrollToId('workspace')">Open workspace</button>
+  </div>
+</div></header>
+
+<section class="hero"><div class="wrap hero-grid">
+  <div>
+    <span class="eyebrow">Karnataka • ODR deposit dispute desk</span>
+    <h1>Turn a deposit fight into a documented settlement.</h1>
+    <p>A structured legal-tech workspace for tenants and landlords to capture the lease position, organize evidence, evaluate proposed deductions, negotiate up to three counteroffers, escalate to mediation, and generate a settlement record.</p>
+    <div class="cta-row">
+      <button class="primary" onclick="scrollToId('workspace')">Start a case</button>
+      <button class="secondary" onclick="scrollToId('legal')">Review legal basis</button>
+    </div>
+  </div>
+  <aside class="hero-card">
+    <div class="stat"><span>Evidence-first</span><strong>PDF ready</strong></div>
+    <div class="stat"><span>Negotiation rounds</span><strong>3 max</strong></div>
+    <div class="stat"><span>Decision support</span><strong>Transparent</strong></div>
+    <div class="stat"><span>Settlement</span><strong>Real PDF + consent</strong></div>
+  </aside>
+</div></section>
+
+<main class="app-shell" id="workspace"><div class="wrap">
+  <div class="progress" id="progress">
+    <div class="step active" onclick="setPanel('intake')">1 · Intake</div><div class="step" onclick="setPanel('evidence')">2 · Evidence</div><div class="step" onclick="setPanel('evaluation')">3 · Evaluation</div><div class="step" onclick="setPanel('negotiation')">4 · Negotiation</div><div class="step" onclick="setPanel('settlement')">5 · Settlement</div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" data-panel="intake">Intake</button>
+    <button class="tab" data-panel="evidence">Evidence</button>
+    <button class="tab" data-panel="evaluation">Evaluation</button>
+    <button class="tab" data-panel="negotiation">Negotiation</button>
+    <button class="tab" data-panel="settlement">Settlement</button>
+  </div>
+
+  <section id="panel-intake" class="panel">
+    <div class="card">
+      <h2>Case intake — both sides, separately</h2><p class="sub">Create a neutral case file. Tenant and landlord submissions are stored as separate records so neither side overwrites the other.</p>
+      <div class="fields">
+        <div class="field"><label>Property address</label><input id="address" placeholder="Apartment / street / Bengaluru, Karnataka"></div>
+        <div class="field"><label>District / city</label><input id="district" placeholder="Bengaluru Urban"></div>
+        <div class="field"><label>Monthly rent (₹)</label><input id="rent" type="number" min="0" placeholder="25000"></div>
+        <div class="field"><label>Security deposit (₹)</label><input id="deposit" type="number" min="0" placeholder="150000"></div>
+        <div class="field"><label>Tenancy start</label><input id="startDate" type="date"></div>
+        <div class="field"><label>Handover / tenancy end</label><input id="endDate" type="date"></div>
+        <div class="field"><label>Agreement basis</label><select id="agreement"><option>Written rental / lease agreement</option><option>Registered lease</option><option>Unregistered written agreement</option><option>Oral / informal arrangement</option></select></div>
+        <div class="field"><label>Dispute status</label><select id="status"><option>Deposit not yet returned</option><option>Partial deposit returned</option><option>Deductions disputed</option><option>Payment demand outstanding</option></select></div>
+      </div>
+      <div class="dual" style="margin-top:16px">
+        <div class="party-card"><strong>Tenant intake</strong><div class="fields"><div class="field"><label>Full name</label><input id="tenantName" placeholder="Tenant name"></div><div class="field"><label>Email / phone</label><input id="tenantContact" placeholder="Contact"></div><div class="field full"><label>Tenant position</label><textarea id="tenantPosition" placeholder="What amount do you accept, and what do you dispute?"></textarea></div></div></div>
+        <div class="party-card"><strong>Landlord intake</strong><div class="fields"><div class="field"><label>Full name</label><input id="landlordName" placeholder="Landlord name"></div><div class="field"><label>Email / phone</label><input id="landlordContact" placeholder="Contact"></div><div class="field full"><label>Landlord position</label><textarea id="landlordPosition" placeholder="What deductions are claimed, and why?"></textarea></div></div></div>
+      </div>
+      <div class="scenario-row" style="margin-top:16px"><button class="scenario" onclick="loadScenario(1)">Scenario 1 · Whitefield repaint</button><button class="scenario" onclick="loadScenario(2)">Scenario 2 · Koramangala fixtures</button><button class="scenario" onclick="loadScenario(3)">Scenario 3 · HSR utilities</button></div>
+      <div class="cta-row"><button class="primary" onclick="saveIntake()">Save case & continue</button></div>
+    </div>
+    <div class="grid" style="margin-top:18px">
+      <div class="card"><h2>Case guardrails</h2><p class="sub">The app separates statutory references from an additional dispute-evaluation clause. This avoids presenting that clause as if it were verbatim text of the Act.</p><div class="rule-grid"><div class="rule"><strong>Wear & tear</strong><span class="mini">Do not auto-charge ordinary wear.</span></div><div class="rule"><strong>Fixtures</strong><span class="mini">Additional clause: 10% annual fixture depreciation.</span></div><div class="rule"><strong>Notice</strong><span class="mini">Additional clause: 1-month notice check.</span></div></div></div>
+      <div class="card"><h2>Workflow state</h2><div class="timeline" id="timeline"></div><div class="notice">This is an ODR aid, not a court order or legal opinion. Applicability of the Karnataka Rent Act is fact-specific.</div></div>
+    </div>
+  </section>
+
+  <section id="panel-evidence" class="panel hidden">
+    <div class="card">
+      <h2>Structured evidence ledger</h2><p class="sub">No OCR or computer vision is used. Add the facts manually and attach supporting PDFs such as the lease, invoices, utility bills, inspection reports, photos exported to PDF, payment records, or messages.</p>
+      <div class="toolbar"><span class="mini">Each item needs a category, claimed amount, responsibility basis and evidence.</span><button class="primary" onclick="addEvidence()">+ Add evidence item</button></div>
+      <div id="evidenceList" class="evidence-list"></div>
+    </div>
+  </section>
+
+  <section id="panel-evaluation" class="panel hidden">
+    <div class="grid">
+      <div class="card"><h2>Rule engine</h2><p class="sub">Five evaluation categories, ordinary wear-and-tear exclusion, fixture depreciation capped at 10% per year, and a one-month notice compliance check. These additional evaluation clauses are not claimed as verbatim Karnataka Rent Act provisions; the result is a negotiation anchor, not a statutory damages award.</p>
+        <div class="fields"><div class="field"><label>Deposit held (₹)</label><input id="calcDeposit" type="number" min="0" value="0"></div><div class="field"><label>Already refunded (₹)</label><input id="refunded" type="number" min="0" value="0"></div>
+        <div class="field"><label>Painting claim (₹)</label><input id="painting" type="number" min="0" value="0"></div><div class="field"><label>Fixtures original cost (₹)</label><input id="fixtures" type="number" min="0" value="0"></div>
+        <div class="field"><label>Fixture age (years)</label><input id="fixtureAge" type="number" min="0" step="0.1" value="0"></div><div class="field"><label>Utilities verified (₹)</label><input id="utilities" type="number" min="0" value="0"></div>
+        <div class="field"><label>Unpaid rent verified (₹)</label><input id="unpaidRent" type="number" min="0" value="0"></div><div class="field"><label>Cleaning / restoration (₹)</label><input id="cleaning" type="number" min="0" value="0"></div>
+        <div class="field"><label>Ordinary wear & tear?</label><select id="wear"><option value="yes">Yes — exclude that portion</option><option value="no">No — documented tenant-caused damage</option></select></div><div class="field"><label>Notice given (days)</label><input id="noticeDays" type="number" min="0" value="30"></div></div>
+        <div class="cta-row"><button class="primary" onclick="calculate()">Run rule engine</button><button class="secondary" onclick="saveEvaluationContinue()">Save & continue → Negotiation</button></div>
+      </div>
+      <div class="card"><h2>Decision trace</h2><div class="result money" id="recommended">₹0</div><div class="breakdown" id="calcBreakdown"></div><div class="notice" style="margin-top:15px">Statutory reference: Sections 47–48 and the Fifth Schedule address repair responsibilities and normal wear-and-tear treatment. The 10% depreciation and 1-month notice items are additional evaluation clauses and are <strong>not claimed as verbatim Karnataka Rent Act text</strong>.</div></div>
+    </div>
+  </section>
+
+  <section id="panel-negotiation" class="panel hidden">
+    <div class="grid"><div class="card"><h2>Negotiation state machine</h2><p class="sub">Maximum 3 counteroffers. Acceptance ends direct negotiation. If the third round ends without settlement, mediation is offered.</p><div class="rounds" id="rounds"></div><div class="cta-row"><button class="primary" onclick="addRound()">Open next round</button><button class="secondary" onclick="escalate()">Escalate to mediator</button></div><div id="mediationNotice" class="notice hidden" style="margin-top:15px">Mediator stage active. The neutral bundle contains intake, evidence, rule trace and offer history.</div><div class="cta-row section-actions"><button class="primary" onclick="saveNegotiationContinue()">Save & continue → Settlement</button><button class="secondary" onclick="setPanel('evaluation')">← Back to Evaluation</button></div></div>
+    <div class="card"><h2>Gap visualizer</h2><div class="breakdown"><div class="row"><span>Landlord opening deduction</span><strong id="gapLandlord">₹0</strong></div><div class="row"><span>Tenant acceptable deduction</span><strong id="gapTenant">₹0</strong></div><div class="row"><span>Current gap</span><strong id="gapValue">₹0</strong></div><div class="row"><span>Gap vs. evaluation anchor</span><strong id="gapPct">0%</strong></div></div><div class="gapbar"><div class="gapfill" id="gapFill" style="width:0%"></div></div><div id="gapStatus" class="noteligible">Settlement unlocks when the gap is ≤ 5%.</div><div class="breakdown" style="margin-top:16px"><div class="row"><span>Deposit</span><strong id="snapDeposit">₹0</strong></div><div class="row"><span>Evaluation anchor</span><strong id="snapEval">₹0</strong></div><div class="row"><span>Current offer</span><strong id="snapOffer">—</strong></div><div class="row"><span>Rounds used</span><strong id="snapRounds">0 / 3</strong></div><div class="row"><span>Path</span><strong id="snapPath">Direct negotiation</strong></div></div></div></div>
+  </section>
+
+  <section id="panel-settlement" class="panel hidden">
+    <div class="grid"><div class="card"><h2>Settlement generator</h2><p class="sub">A real PDF is generated in-browser with a case ID, computed breakdown, both parties, property, negotiation result, timestamp and consent record.</p><div class="fields"><div class="field"><label>Agreed deduction / amount retained (₹)</label><input id="settleDeduction" type="number" min="0"></div><div class="field"><label>Amount returned to tenant (₹)</label><input id="settleAmount" type="number" min="0"></div><div class="field"><label>Payment deadline</label><input id="settleDate" type="date"></div><div class="field full"><label>Settlement terms</label><textarea id="settleTerms" placeholder="Mutual resolution terms, payment mode, release scope, and any mediator notes."></textarea></div></div><div class="consent"><label><input id="digitalConsent" type="checkbox"> <span>I confirm this is a demo digital-consent step. The parties reviewed the displayed settlement terms and consent to record their decision with the current timestamp.</span></label></div><div class="cta-row"><button class="primary" onclick="generateSettlementPDF()">Generate settlement PDF</button><button class="secondary" onclick="generateSettlement()">Preview settlement</button></div></div>
+      <div class="card"><h2>Settlement preview</h2><div id="settlementPreview" class="settlement">Complete the negotiation and consent check to generate the final record.</div><div class="cta-row section-actions"><button class="secondary" onclick="setPanel('negotiation')">← Back to Negotiation</button><button class="primary" onclick="generateSettlementPDF()">Finalize & generate PDF</button></div></div></div>
+  </section>
+
+  <section id="legal" class="card" style="margin-top:18px">
+    <h2>Legal basis & source trail</h2>
+    <p class="sub">This prototype uses the Karnataka Rent Act, 1999 as enacted by Karnataka Act No. 34 of 2001 and reflected in the India Code text, including amendments noted there. Section 47 addresses landlord repairs; Section 48 addresses tenant duties and negligent damage; Section 49 concerns essential supplies/services. The Fifth Schedule allocates specified structural versus day-to-day repairs.</p>
+    <div class="breakdown">
+      <div class="row legal-source"><img class="court-seal" src="https://www.sarkarimocktest.com/images/logo/Karnataka_High_Court_logo.webp" alt="High Court of Karnataka seal (reference only)" title="High Court of Karnataka seal — reference only"><span><strong>Karnataka Rent Act, 1999 — Act No. 34 of 2001</strong><br><span class="mini">Official India Code text • seal shown for visual reference only • no court affiliation</span></span><a href="https://www.indiacode.nic.in/bitstream/123456789/7810/1/34_of_2001_e.pdf" target="_blank" rel="noopener">Open official India Code PDF ↗</a></div>
+      <div class="row"><span>Karnataka DPAL PDF supplied in brief</span><a href="https://dpal.karnataka.gov.in/storage/pdf-files/ao2001/34%20of%202001%20(E).pdf" target="_blank" rel="noopener">Open DPAL source ↗</a></div>
+      <div class="row"><span>Reference article supplied in brief</span><a href="https://www.shriramproperties.com/blog/understanding-the-karnataka-rent-act-rules-tenant-rights-and-landlord-responsibilities-0" target="_blank" rel="noopener">Open reference article ↗</a></div>
+    </div>
+    <p class="mini" style="margin-top:15px">Scope note: the Karnataka Rent Act contains exemptions and area-specific application rules. Rental disputes may also engage the lease contract and other laws. This app is a dispute-organization and negotiation aid, not legal advice and not a substitute for adjudication.</p>
+  </section>
+  <div class="footer">Deposit War Room • Prototype • Local browser state only • PDF attachments stay in the browser session and are not uploaded to a server by this demo.</div>
+</div></main>
+</div>
+
+<script>
+const state={panel:'intake',evidence:[],rounds:[],mediated:false,eval:0,deposit:0,caseId:'DWR-'+new Date().getFullYear()+'-'+Math.random().toString(36).slice(2,8).toUpperCase(),tenancy:{},settlementUnlocked:false};
+const $=id=>document.getElementById(id); const money=n=>'₹'+Math.round(Number(n)||0).toLocaleString('en-IN');
+const categories=['Painting','Fixtures','Utilities','Unpaid rent','Cleaning'];
+const workflow=['intake','evidence','evaluation','negotiation','mediator','settlement','closed'];
+function scrollToId(id){$(id).scrollIntoView({behavior:'smooth'});}
+function setPanel(panel){state.panel=panel;document.querySelectorAll('.panel').forEach(x=>x.classList.add('hidden'));$('panel-'+panel).classList.remove('hidden');document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.dataset.panel===panel));const idx=['intake','evidence','evaluation','negotiation','settlement'].indexOf(panel);document.querySelectorAll('.step').forEach((s,i)=>{s.classList.toggle('active',i===idx);s.classList.toggle('done',i<idx)});if(panel==='negotiation')refreshNegotiation();updateTimeline();}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>setPanel(b.dataset.panel)));
+function saveEvidenceContinue(){localStorage.setItem('dwr-evidence',JSON.stringify(state.evidence.map(({file,...e})=>e)));setPanel('evaluation');}
+function saveEvaluationContinue(){calculate();localStorage.setItem('dwr-evaluation',JSON.stringify({eval:state.eval,deposit:state.deposit}));setPanel('negotiation');}
+function saveNegotiationContinue(){refreshNegotiation();if(!state.rounds.length){alert('Open at least one negotiation round before continuing.');return;}if(!state.settlementUnlocked&&!state.mediated){alert('Continue after reaching the ≤5% gap or escalating to mediation.');return;}setPanel('settlement');}
+function saveIntake(){state.tenancy={tenant:{name:$('tenantName').value,contact:$('tenantContact').value,position:$('tenantPosition').value},landlord:{name:$('landlordName').value,contact:$('landlordContact').value,position:$('landlordPosition').value},address:$('address').value,district:$('district').value,rent:Number($('rent').value)||0,deposit:Number($('deposit').value)||0,start:$('startDate').value,end:$('endDate').value,agreement:$('agreement').value,status:$('status').value};state.deposit=state.tenancy.deposit;$('calcDeposit').value=state.deposit;$('snapDeposit').textContent=money(state.deposit);setPanel('evidence');}
+function loadScenario(n){const data={1:{address:'Prestige Lakeside Habitat, Whitefield, Bengaluru, Karnataka',district:'Bengaluru Urban',rent:28000,deposit:168000,tenant:'Asha Rao',landlord:'Rohan Mehta',painting:18000,fixtures:0,fixtureAge:0,utilities:4200,unpaidRent:0,cleaning:6500,noticeDays:45,wear:'yes'},2:{address:'80 Feet Road, Koramangala, Bengaluru, Karnataka',district:'Bengaluru Urban',rent:35000,deposit:210000,tenant:'Nikhil Menon',landlord:'Priya Shah',painting:0,fixtures:48000,fixtureAge:3,utilities:0,unpaidRent:0,cleaning:3000,noticeDays:35,wear:'no'},3:{address:'HSR Layout Sector 2, Bengaluru, Karnataka',district:'Bengaluru Urban',rent:30000,deposit:180000,tenant:'Meera Iyer',landlord:'Vikram Rao',painting:12000,fixtures:15000,fixtureAge:2,utilities:8600,unpaidRent:15000,cleaning:4500,noticeDays:10,wear:'yes'}}[n];$('address').value=data.address;$('district').value=data.district;$('rent').value=data.rent;$('deposit').value=data.deposit;$('tenantName').value=data.tenant;$('landlordName').value=data.landlord;$('startDate').value='2023-06-01';$('endDate').value='2026-05-31';$('tenantPosition').value='Dispute deductions that are ordinary wear or insufficiently evidenced.';$('landlordPosition').value='Seek only documented, contractually supported deductions.';['painting','fixtures','fixtureAge','utilities','unpaidRent','cleaning','noticeDays'].forEach(id=>$(id).value=data[id]);$('wear').value=data.wear;saveIntake();}
+function addEvidence(item={}){const id=crypto.randomUUID?crypto.randomUUID():String(Date.now()+Math.random());state.evidence.push({id,category:item.category||'Painting',title:item.title||'',amount:item.amount||0,basis:item.basis||'Agreement clause / actual loss',wear:item.wear||'Possible ordinary wear',noticeDate:item.noticeDate||'',notes:item.notes||'',file:null});renderEvidence();}
+function renderEvidence(){$('evidenceList').innerHTML='';state.evidence.forEach((e,i)=>{const el=document.createElement('div');el.className='evidence';el.innerHTML=`<div class="e-head"><strong>Evidence item ${i+1}</strong><span class="badge">${e.category}</span></div><div class="e-grid"><div class="field"><label>Category</label><select data-k="category">${categories.map(x=>`<option ${x===e.category?'selected':''}>${x}</option>`).join('')}</select></div><div class="field"><label>Claimed amount (₹)</label><input data-k="amount" type="number" min="0" value="${e.amount}"></div><div class="field"><label>Agreement / responsibility basis</label><input data-k="basis" value="${e.basis}"></div><div class="field"><label>Wear & tear assessment</label><select data-k="wear"><option ${e.wear==='Possible ordinary wear'?'selected':''}>Possible ordinary wear</option><option ${e.wear==='Likely tenant-caused'?'selected':''}>Likely tenant-caused</option><option ${e.wear==='Landlord responsibility'?'selected':''}>Landlord responsibility</option><option ${e.wear==='Unknown'?'selected':''}>Unknown</option></select></div><div class="field"><label>Notice date</label><input data-k="noticeDate" type="date" value="${e.noticeDate}"></div><div class="field"><label>Evidence title</label><input data-k="title" value="${e.title}" placeholder="Invoice / bill / inspection note"></div><div class="field full"><label>What does the PDF prove?</label><textarea data-k="notes">${e.notes}</textarea></div><div class="field full"><label>Attach PDF</label><input class="pdfInput" type="file" accept="application/pdf"><div class="pdf" id="file-${e.id}">${e.file?'Attached: '+e.file:'PDF only • manual review • stays local'}</div></div></div><div class="cta-row"><button class="secondary remove" type="button">Remove item</button></div>`;el.querySelectorAll('[data-k]').forEach(inp=>inp.addEventListener('input',()=>{e[inp.dataset.k]=inp.dataset.k==='amount'?Number(inp.value)||0:inp.value;renderEvidenceBadge(el,e);}));el.querySelector('.pdfInput').addEventListener('change',ev=>{const f=ev.target.files[0];if(!f)return;if(f.type!=='application/pdf'){alert('Please choose a PDF file.');ev.target.value='';return;}e.file=f.name;$('file-'+e.id).textContent='Attached: '+f.name;});el.querySelector('.remove').onclick=()=>{state.evidence=state.evidence.filter(x=>x.id!==e.id);renderEvidence();};$('evidenceList').appendChild(el);});if(!state.evidence.length)addEvidence();}
+function renderEvidenceBadge(el,e){el.querySelector('.badge').textContent=e.category;}
+addEvidence();
+function calculate(){const wear=$('wear').value==='yes', notice=Number($('noticeDays').value)||0, age=Number($('fixtureAge').value)||0;const deposit=Number($('calcDeposit').value)||0,refunded=Number($('refunded').value)||0,available=Math.max(0,deposit-refunded);const raw={Painting:Number($('painting').value)||0,Fixtures:Number($('fixtures').value)||0,Utilities:Number($('utilities').value)||0,'Unpaid rent':Number($('unpaidRent').value)||0,Cleaning:Number($('cleaning').value)||0};const out={};out.Painting=wear?0:raw.Painting;out.Fixtures=Math.max(0,raw.Fixtures*(1-Math.min(1,0.10*age)));out.Utilities=raw.Utilities;out['Unpaid rent']=raw['Unpaid rent'];out.Cleaning=wear?0:raw.Cleaning;let total=Object.values(out).reduce((a,b)=>a+b,0);const noticePass=notice>=30;if(!noticePass){out.Fixtures=0;total=Object.values(out).reduce((a,b)=>a+b,0);}state.eval=Math.min(total,available);state.deposit=deposit;$('recommended').textContent=money(state.eval);$('calcBreakdown').innerHTML='';Object.entries(out).forEach(([label,v])=>{const r=document.createElement('div');r.className='row';r.innerHTML=`<span>${label}${label==='Fixtures'?' • 10%/yr depreciation':''}</span><strong>${money(v)}</strong>`;$('calcBreakdown').appendChild(r);});[['Available deposit',available],['Notice rule',noticePass?'Pass (≥30 days)':'Fail (<30 days) — fixture deduction blocked'],['Rule-engine anchor',state.eval]].forEach(([a,b])=>{const r=document.createElement('div');r.className='row';r.innerHTML=`<span>${a}</span><strong>${typeof b==='number'?money(b):b}</strong>`;$('calcBreakdown').appendChild(r);});$('snapEval').textContent=money(state.eval);if(!state.rounds.length)addRound();updateTimeline();}
+function addRound(){if(state.rounds.length>=3){alert('Three direct-negotiation rounds are complete. Escalate to mediator.');return;}const prev=state.rounds.length?state.rounds[state.rounds.length-1].amount:state.eval;state.rounds.push({amount:Math.round(prev),reply:'Pending',note:''});renderRounds();refreshNegotiation();}
+function renderRounds(){$('rounds').innerHTML='';state.rounds.forEach((r,i)=>{const el=document.createElement('div');el.className='round '+(i===state.rounds.length-1?'current':'');el.innerHTML=`<h4>Round ${i+1} / 3</h4><div class="offer-row"><div class="field"><label>Proposed deduction retained (₹)</label><input type="number" min="0" value="${r.amount}"></div><div class="field"><label>Response</label><select><option>Pending</option><option>Accepted</option><option>Countered</option><option>Rejected</option></select></div></div><div class="field" style="margin-top:10px"><label>Response note</label><textarea>${r.note}</textarea></div>`;const inp=el.querySelector('input');inp.oninput=()=>{r.amount=Number(inp.value)||0;refreshNegotiation()};el.querySelector('select').value=r.reply;el.querySelector('select').onchange=ev=>{r.reply=ev.target.value;if(r.reply==='Accepted'){state.settlementUnlocked=true;state.settleAmount=r.amount;}refreshNegotiation()};el.querySelector('textarea').oninput=ev=>r.note=ev.target.value;$('rounds').appendChild(el);});}
+function refreshNegotiation(){renderRounds();$('snapRounds').textContent=state.rounds.length+' / 3';$('snapOffer').textContent=state.rounds.length?money(state.rounds[state.rounds.length-1].amount):'—';$('snapPath').textContent=state.mediated?'Mediator escalation requested':'Direct negotiation';const landlord=state.eval||0,tenant=state.rounds.length?state.rounds[state.rounds.length-1].amount:0,gap=Math.abs(landlord-tenant),pct=landlord?gap/landlord:0;$('gapLandlord').textContent=money(landlord);$('gapTenant').textContent=money(tenant);$('gapValue').textContent=money(gap);$('gapPct').textContent=(pct*100).toFixed(1)+'%';$('gapFill').style.width=Math.min(100,pct*100)+'%';const eligible=pct<=.05&&state.rounds.length>0;$('gapStatus').textContent=eligible?'Settlement eligible: gap is ≤ 5%.':'Settlement unlocks when the gap is ≤ 5%.';$('gapStatus').className=eligible?'eligible':'noteligible';state.settlementUnlocked=state.settlementUnlocked||eligible;updateTimeline();}
+function escalate(){state.mediated=true;$('mediationNotice').classList.remove('hidden');refreshNegotiation();}
+function generateSettlement(){const now=new Date().toLocaleString('en-IN');const deduction=Number($('settleDeduction').value)||state.rounds[state.rounds.length-1]?.amount||state.eval;const returned=Number($('settleAmount').value)||Math.max(0,state.deposit-deduction);const terms=$('settleTerms').value||'The parties agree that the recorded settlement resolves the listed deposit dispute items subject to applicable law.';const cats=state.evidence.map(e=>`${e.category}: ${money(e.amount)} — ${e.wear}`).join('\n')||'No evidence items recorded.';const text=`DEPOSIT WAR ROOM — SETTLEMENT RECORD\nCase ID: ${state.caseId}\nGenerated: ${now}\n\nTENANT\n${state.tenancy.tenant?.name||'________________'}\n\nLANDLORD\n${state.tenancy.landlord?.name||'________________'}\n\nPROPERTY\n${state.tenancy.address||'________________'}\n\nSECURITY DEPOSIT: ${money(state.deposit)}\nRULE-ENGINE ANCHOR: ${money(state.eval)}\nAGREED DEDUCTION: ${money(deduction)}\nAMOUNT RETURNED: ${money(returned)}\nROUNDS: ${state.rounds.length} / 3\nMEDIATOR: ${state.mediated?'Yes':'No'}\n\nDISPUTED ITEMS\n${cats}\n\nTERMS\n${terms}\n\nDIGITAL CONSENT\nConsent recorded in demo UI: ${$('digitalConsent').checked?'YES':'NO'}\nTimestamp: ${now}\n\nLEGAL TRACEABILITY\nStatutory references: Karnataka Rent Act, 1999 (Act No. 34 of 2001), including Sections 47–49 and Fifth Schedule. Additional evaluation clauses used by this prototype: 10% annual fixture depreciation cap, one-month notice check, and exclusion of ordinary wear and tear. These clauses are not claimed as verbatim statutory text.\n\nSIGNATURES\nTenant: ____________________\nLandlord: __________________\nMediator / witness: __________________`;$('settlementPreview').textContent=text;return {text,deduction,returned,now};}
+function generateSettlementPDF(){if(!$('digitalConsent').checked){alert('Please complete the demo digital-consent checkbox before generating the final PDF.');return;}const g=generateSettlement();if(!window.jspdf){alert('PDF library not loaded. Use Print / Save PDF from the browser instead.');return;}const {jsPDF}=window.jspdf;const doc=new jsPDF({unit:'mm',format:'a4'});doc.setFont('helvetica','bold');doc.setFontSize(16);doc.text('DEPOSIT WAR ROOM',20,20);doc.setFontSize(11);doc.text('Karnataka Security Deposit Settlement Record',20,27);doc.setFont('helvetica','normal');doc.setFontSize(9);let y=38;g.text.split('\n').forEach(line=>{const parts=doc.splitTextToSize(line,170);parts.forEach(p=>{if(y>280){doc.addPage();y=20;}doc.text(p,20,y);y+=5;});});doc.setFontSize(8);doc.text('Demo ODR prototype • Not a court order or legal opinion',20,290);doc.save(state.caseId+'-settlement.pdf');}
+function updateTimeline(){const holder=$('timeline');if(!holder)return;const current=state.mediated?'mediator':state.panel;holder.innerHTML=workflow.map(x=>`<div class="state-pill ${x===current?'active':''}">${x.replace('-', ' ')}</div>`).join('');}
+$('settleDeduction').value=0;$('settleAmount').value=0;$('settleDate').value=new Date().toISOString().slice(0,10);updateTimeline();
+$('themeBtn').onclick=()=>{const dark=document.body.getAttribute('data-theme')!=='dark';document.body.setAttribute('data-theme',dark?'dark':'light');$('themeBtn').textContent=dark?'☀ Light':'☾ Dark';localStorage.setItem('dwr-theme',dark?'dark':'light')};if(localStorage.getItem('dwr-theme')==='dark'){document.body.setAttribute('data-theme','dark');$('themeBtn').textContent='☀ Light'}
+/* particle field */const canvas=$('particles'),ctx=canvas.getContext('2d');let W,H,pts=[],mx=-9999,my=-9999;function resize(){W=canvas.width=innerWidth*devicePixelRatio;H=canvas.height=innerHeight*devicePixelRatio;canvas.style.width=innerWidth+'px';canvas.style.height=innerHeight+'px';ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);W=innerWidth;H=innerHeight;pts=Array.from({length:Math.min(105,Math.floor(innerWidth/11))},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,r:Math.random()*1.8+.5,a:Math.random()*.65+.2}))}addEventListener('resize',resize);addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});addEventListener('mouseleave',()=>{mx=-9999;my=-9999});function particleLoop(){ctx.clearRect(0,0,W,H);for(const p of pts){const dx=mx-p.x,dy=my-p.y,d=Math.hypot(dx,dy);if(d<150&&d>0){p.vx+=dx/d*.003;p.vy+=dy/d*.003}p.x+=p.vx;p.y+=p.vy;p.vx*=.998;p.vy*=.998;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;ctx.beginPath();ctx.fillStyle=`rgba(255,222,150,${p.a})`;ctx.shadowBlur=12;ctx.shadowColor='rgba(255,220,150,.7)';ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0}for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){const a=pts[i],b=pts[j],d=Math.hypot(a.x-b.x,a.y-b.y);if(d<105){ctx.strokeStyle=`rgba(255,230,200,${.09*(1-d/105)})`;ctx.lineWidth=.7;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}}requestAnimationFrame(particleLoop)}resize();particleLoop();</script>
+</body>
+</html>
